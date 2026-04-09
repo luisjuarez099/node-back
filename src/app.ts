@@ -6,6 +6,8 @@ import { ErrorHandle } from "./middlewares/errorHandle";
 
 import userRoutes from "./routes/user.routes";
 import authRoutes from "./routes/auth.routes";
+import adminRoutes from "./routes/admin.routes";
+import reservations from "./routes/reservations.routes"
 import protectedRoutes from "./routes/protected.routes";
 import showUsersRoutes from "./routes/showUsers.routes";
 
@@ -17,11 +19,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(LoggerMiddleware);
 
-// rutas
-app.use("/auth", authRoutes);
+// rutas - En app.ts defines el prefijo del módulo
+app.use("/api/auth", authRoutes);
 app.use("/users", userRoutes);
-app.use("/protected", protectedRoutes);
-app.use("/show", showUsersRoutes);
+app.use("/api/protected", protectedRoutes);
+app.use("/api/show", showUsersRoutes);
+
+//admin
+app.use("/api/admin", adminRoutes);
+app.use("/api/reservations", reservations);
 
 // error handler SIEMPRE al final
 app.use(ErrorHandle);

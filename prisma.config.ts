@@ -13,3 +13,4 @@ export default defineConfig({
     url: process.env["DATABASE_URL"],
   },
 });
+//Para ejecutar el seed es : npx prisma db seed

@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-import { prisma } from "../configuration/prisma.config";
-
+import { AllUsers } from "../services/showUsers.service";
 
 export const showUsers = async (req: Request, res: Response) => {
     try {
-        const allUsers = await prisma.user.findMany();
+        const allUsers = await AllUsers();
         res.json(allUsers);
     } catch (error) {
         console.error('Error al obtener usuarios:', error);

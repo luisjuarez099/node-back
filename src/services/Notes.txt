@@ -1,0 +1,36 @@
+#1
+Usa tipos de Prisma SOLO dentro de la capa de base de datos (services / repositories).
+
+El servicio trabaja directamente con prisma que es la base de datos
+
+NO SE USA EN :
+Cuándo NO usar tipos de Prisma
+
+❌ En controllers
+❌ En validaciones
+❌ En DTOs
+❌ En requests del frontend
+❌ En lógica de negocio independiente
+
+
+
+
+Cuándo SÍ usar tipos de Prisma
+
+Tipo Prisma	Cuándo usar
+✅ Prisma.ModelCreateInput	            crear registros
+✅ Prisma.ModelUncheckedCreateInput	    crear con IDs
+✅ Prisma.ModelWhereInput	            filtros
+✅ Prisma.ModelFindManyArgs	            queries complejas
+✅ Prisma.ModelUpdateInput	            updates
+✅ Prisma.ModelUncheckedUpdateInput	    updates con IDs
+✅ Prisma.ModelWhereUniqueInput	        encontrar por ID o campos únicos
+✅ Prisma.ModelSelect	                seleccionar campos específicos
+✅ Prisma.ModelInclude	                incluir relaciones
+✅ Prisma.ModelOrderByWithRelationInput	ordenar por campos o relaciones
+
+
+
+#2
+✔ Usa Prisma types cuando hablas con la DB
+✔ Usa type cuando hablas con la API
