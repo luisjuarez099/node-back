@@ -4,7 +4,8 @@ import morgan from "morgan";
 import { LoggerMiddleware } from "./middlewares/logger";
 import { ErrorHandle } from "./middlewares/errorHandle";
 
-import userRoutes from "./routes/user.routes";
+import userRoutesLocal from "./routes/user.routes";
+import userRoutes from "./routes/appoiments.routes";
 import authRoutes from "./routes/auth.routes";
 import adminRoutes from "./routes/admin.routes";
 import reservations from "./routes/reservations.routes"
@@ -21,13 +22,14 @@ app.use(LoggerMiddleware);
 
 // rutas - En app.ts defines el prefijo del módulo
 app.use("/api/auth", authRoutes);
-app.use("/users", userRoutes);
+app.use("/users", userRoutesLocal);
 app.use("/api/protected", protectedRoutes);
 app.use("/api/show", showUsersRoutes);
 
 //admin
 app.use("/api/admin", adminRoutes);
 app.use("/api/reservations", reservations);
+app.use('/api/users', userRoutes)
 
 // error handler SIEMPRE al final
 app.use(ErrorHandle);
